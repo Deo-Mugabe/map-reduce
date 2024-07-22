@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Functions and Tests</title>
+    <script>
+        // Function to return the largest of two numbers
+        function max(a, b) {
+            return a > b ? a : b;
+        }
+
+        // Function to return the largest of three numbers
+        function maxOfThree(a, b, c) {
+            return max(max(a, b), c);
+        }
+
+        // Function to check if a character is a vowel
+        function isVowel(char) {
+            return ['a', 'e', 'i', 'o', 'u'].includes(char.toLowerCase());
+        }
+
+        // Function to sum all numbers in an array using reduce
+        function sum(arr) {
+            return arr.reduce((acc, num) => acc + num, 0);
+        }
+
+        // Function to multiply all numbers in an array using reduce
+        function multiply(arr) {
+            return arr.reduce((acc, num) => acc * num, 1);
+        }
+
+        // Function to reverse a string using split, reverse and join
+        function reverse(str) {
+            return str.split('').reverse().join('');
+        }
+
+        // Function to find the length of the longest word in an array
+        function findLongestWord(words) {
+            return Math.max(...words.map(word => word.length));
+        }
+
+        // Function to filter words longer than a given length using filter
+        function filterLongWords(words, length) {
+            return words.filter(word => word.length > length);
+        }
+
+        // Function to test other functions
+        function myFunctionTest(expected, function2test) {
+            if (expected === function2test()) {
+                return "TEST SUCCEEDED";
+            } else {
+                return "TEST FAILED. Expected " + expected + " found " + function2test();
+            }
+        }
+
+        // Test cases using myFunctionTest and console.assert
+        console.log("Expected output of max(20, 10) is 20: " + myFunctionTest(20, function () { return max(20, 10); }));
+        console.assert(max(20, 10) === 20, "Test Failed: Expected output of max(20, 10) is 20");
+
+        console.log("Expected output of maxOfThree(5, 4, 44) is 44: " + myFunctionTest(44, function () { return maxOfThree(5, 4, 44); }));
+        console.assert(maxOfThree(5, 4, 44) === 44, "Test Failed: Expected output of maxOfThree(5, 4, 44) is 44");
+
+        console.log("Expected output of isVowel('a') is true: " + myFunctionTest(true, function () { return isVowel('a'); }));
+        console.assert(isVowel('a') === true, "Test Failed: Expected output of isVowel('a') is true");
+
+        console.log("Expected output of isVowel('b') is false: " + myFunctionTest(false, function () { return isVowel('b'); }));
+        console.assert(isVowel('b') === false, "Test Failed: Expected output of isVowel('b') is false");
+
+        console.log("Expected output of sum([1, 2, 3, 4]) is 10: " + myFunctionTest(10, function () { return sum([1, 2, 3, 4]); }));
+        console.assert(sum([1, 2, 3, 4]) === 10, "Test Failed: Expected output of sum([1, 2, 3, 4]) is 10");
+
+        console.log("Expected output of multiply([1, 2, 3, 4]) is 24: " + myFunctionTest(24, function () { return multiply([1, 2, 3, 4]); }));
+        console.assert(multiply([1, 2, 3, 4]) === 24, "Test Failed: Expected output of multiply([1, 2, 3, 4]) is 24");
+
+        console.log("Expected output of reverse('jag testar') is 'ratset gaj': " + myFunctionTest('ratset gaj', function () { return reverse('jag testar'); }));
+        console.assert(reverse('jag testar') === 'ratset gaj', "Test Failed: Expected output of reverse('jag testar') is 'ratset gaj'");
+
+        console.log("Expected output of findLongestWord(['apple', 'banana', 'orange']) is 6: " + myFunctionTest(6, function () { return findLongestWord(['apple', 'banana', 'orange']); }));
+        console.assert(findLongestWord(['apple', 'banana', 'orange']) === 6, "Test Failed: Expected output of findLongestWord(['apple', 'banana', 'orange']) is 6");
+
+        console.log("Expected output of filterLongWords(['apple', 'banana', 'orange'], 5) is 'banana,orange': " + myFunctionTest(['banana', 'orange'].toString(), function () { return filterLongWords(['apple', 'banana', 'orange'], 5).toString(); }));
+        console.assert(filterLongWords(['apple', 'banana', 'orange'], 5).toString() === ['banana', 'orange'].toString(), "Test Failed: Expected output of filterLongWords(['apple', 'banana', 'orange'], 5) is 'banana,orange'");
+
+        // Map/Filter/Reduce exercise
+        const a = [1, 2, 3, 4, 5];
+        const multipliedBy10 = a.map(x => x * 10);
+        const elementsEqualTo3 = a.filter(x => x === 3);
+        const productOfAllElements = a.reduce((acc, x) => acc * x, 1);
+
+        console.log("Original array: " + a);
+        console.log("Multiplied by 10: " + multipliedBy10);
+        console.log("Elements equal to 3: " + elementsEqualTo3);
+        console.log("Product of all elements: " + productOfAllElements);
+    </script>
+</head>
+<body>
+    Look in the Chrome developer console to see the output. CTRL+SHIFT+J
+</body>
+</html>
